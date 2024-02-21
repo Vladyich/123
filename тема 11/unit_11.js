@@ -85,6 +85,7 @@ function f5() {
     inp5 = document.querySelector(".i-5")
     d1.unshift(inp5.value)
     showArr('.out-5', d1);
+    inp5.value = ""
 }
 
 document.querySelector('.b-5').onclick = f5;
@@ -105,14 +106,17 @@ let d6 = ['test', 5, 12];
 
 
 function f6() {
-    let inp6 = document.querySelector(".i-6").value
-    console.log(inp6)
-    val6 = d6.length
-    console.log(val6)
-    d6[d6.length] = inp6 // здесь в длтнне +1 не нужен т.к. длина 3 
+    let inp6 = document.querySelector(".i-6"); // можно сразу присвоить и value, 
+    // но тогда в других выражениях value не работает в частности не очищается инпут
+    // console.log(inp6)
+    val6 = d6.length;
+    // console.log(val6)
+    d6[val6] = inp6.value; // здесь в длтнне +1 не нужен т.к. длина 3 
     // а последний элемент №2, поэтому добавляя №3 по номеру соответствует длинне
 // console.log(val6)
+
     showArr('.out-6', d6);
+    inp6.value = ""
 }
 
 document.querySelector('.b-6').onclick = f6;
@@ -146,7 +150,7 @@ let d8 = [2, '4', 12, 67, 'hello'];
 
 
 function f8() {
-    let inp8 = document.querySelector(".i-8").value
+    let inp8 = document.querySelector(".i-8")
     // console.log(inp8)
 // d8.length = +1
 // d8[d8.length] = 999
@@ -161,15 +165,14 @@ console.log(d8.length)
 
 
     for(i = d8.length; i >= -2; i-- ){
-        
         d8[i] = d8[i-1]
-        
     }
-    console.log(i)
-   d8[0] = inp8
+    // console.log(i)
+   d8[0] = inp8.value
    
-    console.log(d8)
+    // console.log(d8)
     showArr('.out-8', d8);
+    inp8.value = ""
 }
 
 document.querySelector('.b-8').onclick = f8;
@@ -260,11 +263,16 @@ document.querySelector('.b-12').onclick = f12;
 
 
 let d13 = [6, 0, 22, 1, 4, 76];
-
+let ar13 = []
+// let ar13 = ""
 function f13() {
-    let ar13 = ''
+    
+     console.log(typeof(d13))
     for(i = d13.length-1; i > -1; i--)
-    ar13 += d13[i] + ", "
+    // ar13 += d13[i] - работает и так и так. Но здесь гибко можно добавить запятую
+    ar13.push(d13[i])
+    ar13 += ","
+   
 
 
     showArr('.out-13', ar13);
@@ -307,7 +315,11 @@ document.querySelector('.b-14').onclick = f14;
 let d15 = [0, 2, 5, -4, 6, 22, -9, -12, 8, 12, 13, 78];
 
 function f15() {
-
+let inp15 = +document.querySelector(".i-15").value
+for(let i=0; i < d15.length; i++)
+if(d15.indexOf(inp15) == -1){
+    d15.push(inp15)
+}
 
     showArr('.out-15', d15);
 }

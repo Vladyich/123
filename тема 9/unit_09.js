@@ -80,9 +80,10 @@ document.querySelector('.b-5').onclick = f5;
 function f6() {
 let out6 = document.querySelector(".out-6")
 countp6 = document.querySelectorAll(".p-6") 
-console.log([countp6].length) // почему-то выводит 1 - НЕ ПОНЯТНО
+
 for(let i = 0; i < countp6.length; i++){
-    out6.innerHTML = i
+    out6.innerHTML = i+1
+    console.log(countp6[i]) // почему-то выводит 1 - НЕ ПОНЯТНО
 }
 
 }
@@ -195,7 +196,7 @@ document.querySelector('.b-12').onclick = f12;
 // функция f13_1. Созданный div добавляется в out-13.
 
 function f13() {
-cr13 = document.createElement("div");
+let cr13 = document.createElement("div");
 cr13.innerHTML = "pushMe";
 cr13.classList.add("bg-13");
 document.querySelector(".out-13").appendChild(cr13)
@@ -205,6 +206,10 @@ cr13.onclick = f13_1;
 
 function f13_1() {
     document.querySelector('.out-13-1').innerHTML += this.innerHTML;
+    let cr13 = document.createElement("div");
+    cr13.innerHTML = "pushMe";
+    cr13.classList.add("bg-13");
+    document.querySelector(".out-13-1").appendChild(cr13)
 }
 
 
@@ -249,7 +254,7 @@ function f16() {
     cr16 = document.createElement("div")
     cr16.classList.add("bg-16")
     cr16.innerHTML = 16
-    document.querySelector(".out-16").before(cr16)
+    document.querySelector(".out-16").after(cr16)
 
 }
 
